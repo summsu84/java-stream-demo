@@ -2,6 +2,7 @@ package com.teamjw;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Stream;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -33,5 +34,16 @@ public class StreamDemoApplication {
 		// stream 기반 + method reference
 		list.stream().filter(s -> s.startsWith("c")).map(String::toUpperCase).forEach(log::info);
 	}
-
+	
+	public static void genStream() {
+		
+		List<Integer> list = Arrays.asList(1,2,3,4,5,6);
+		Stream<Integer> intStream = list.stream(); // Collection to Stream
+		Stream<String> strStream = Stream.of(new String[] {"a", "b", "c", "d"}); // Array to Stream
+		Stream<Integer> evenStream = Stream.iterate(0, n->n+2);
+		Stream<Double> randomStream = Stream.generate(Math::random);
+	
+	}
+		
+	
 }
